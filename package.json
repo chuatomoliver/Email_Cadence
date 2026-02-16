@@ -1,10 +1,20 @@
 {
-  "name": "${PROJECT_NAME}",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "email-cadence-monorepo",
+  "private": true,
+  "packageManager": "npm@11.4.2",
+  "workspaces": [
+    "apps/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "check-env": "node check-env.js",
+    "dev": "turbo run dev",
+    "dev:web": "npm run dev --workspace=@apps/web",
+    "dev:api": "npm run dev --workspace=@apps/api",
+    "dev:worker": "npm run dev --workspace=@apps/worker",
+    "build": "turbo run build"
   },
-  "private": true
+  "devDependencies": {
+    "turbo": "latest",
+    "typescript": "^5.0.0"
+  }
 }
